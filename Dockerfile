@@ -24,6 +24,8 @@ RUN ln -s /opt/java/openjdk-11.0.16_8 /usr/lib/jvm/openjdk-11.0.16_8
 
 RUN rm -f OpenJDK11U-jdk_x64_linux_11.0.16_8.tar.gz
 
-RUN sed -i 's+$JAVA_BIN $JAVA_OPTS+/usr/lib/jvm/openjdk-11.0.16_8/bin/java $JAVA_OPTS+g' /usr/local/bin/jenkins-agent
+RUN sed '2 i JAVA_HOME=/usr/lib/jvm/openjdk-11.0.16_8' /usr/local/bin/jenkins-agent > /usr/local/bin/jenkins-agent-java11
+
+RUN chmod +x /usr/local/bin/jenkins-agent-java11
 
 USER jenkins
