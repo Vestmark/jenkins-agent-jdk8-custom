@@ -1,4 +1,4 @@
-FROM jenkins/inbound-agent:latest-jdk8
+FROM jenkins/inbound-agent:3283.v92c105e0f819-5
 
 USER root
 
@@ -37,5 +37,7 @@ RUN sed 's+$JAVA_BIN $JAVA_OPTS+/usr/lib/jvm/openjdk-11.0.16_8/bin/java $JAVA_OP
 RUN sed 's+$JAVA_BIN $JAVA_OPTS+/usr/lib/jvm/openjdk-17/bin/java $JAVA_OPTS+g' /usr/local/bin/jenkins-agent > /usr/local/bin/jenkins-agent-java17
 
 RUN chmod +x /usr/local/bin/jenkins-agent-java11 /usr/local/bin/jenkins-agent-java17
+
+RUN echo "JAVA_HOME=/usr/lib/jvm/jdkredhat-openjdk-1.8.0.275" >> /etc/environment
 
 USER jenkins
