@@ -38,8 +38,8 @@ RUN sed 's+$JAVA_BIN $JAVA_OPTS+/usr/lib/jvm/openjdk-17/bin/java $JAVA_OPTS+g' /
 
 RUN chmod +x /usr/local/bin/jenkins-agent-java11 /usr/local/bin/jenkins-agent-java17
 
-RUN mv /opt/java/openjdk /opt/java/openjdk-native-install
+RUN echo "export JAVA_HOME=/usr/lib/jvm/jdkredhat-openjdk-1.8.0.275" >> /etc/profile.d/set_java8_default.sh
 
-RUN ln -s /usr/lib/jvm/jdkredhat-openjdk-1.8.0.275 /opt/java/openjdk
+RUN chmod +x /etc/profile.d/set_java8_default.sh
 
 USER jenkins
