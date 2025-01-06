@@ -42,4 +42,6 @@ RUN echo "export JAVA_HOME=/usr/lib/jvm/jdkredhat-openjdk-1.8.0.275" >> /etc/pro
 
 RUN chmod +x /etc/profile.d/set_java8_default.sh
 
+RUN ENV JAVA_HOME=/usr/lib/jvm/jdkredhat-openjdk-1.8.0.275
+
 USER jenkins
