@@ -38,4 +38,6 @@ RUN sed 's+$JAVA_BIN $JAVA_OPTS+/usr/lib/jvm/openjdk-17/bin/java $JAVA_OPTS+g' /
 
 RUN chmod +x /usr/local/bin/jenkins-agent-java11 /usr/local/bin/jenkins-agent-java17
 
+RUN JAVA_HOME=/opt/java/openjdk-8u275-b01
+
 USER jenkins
