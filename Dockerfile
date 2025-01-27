@@ -1,4 +1,4 @@
-FROM jenkins/inbound-agent:latest-jdk8
+FROM jenkins/inbound-agent:latest-jdk11
 
 USER root
 
@@ -32,8 +32,12 @@ RUN ln -s /opt/java/jdk-17.0.9 /usr/lib/jvm/openjdk-17
 
 RUN rm -f jdk-17.0.9_linux-x64_bin.tar.gz
 
-RUN sed 's+$JAVA_BIN $JAVA_OPTS+/usr/lib/jvm/openjdk-11.0.16_8/bin/java $JAVA_OPTS+g' /usr/local/bin/jenkins-agent > /usr/local/bin/jenkins-agent-java11
+RUN sed 's+$JAVA_BIN $JAVA_OPTS+/opt/java/openjdk-native-install/bin/java $JAVA_OPTS+g' /usr/local/bin/jenkins-agent > /usr/local/bin/jenkins-agent-java11
 
 RUN chmod +x /usr/local/bin/jenkins-agent-java11
+
+RUN mv /opt/java/openjdk /opt/java/openjdk-native-install
+
+RUN ln -s /usr/lib/jvm/jdkredhat-openjdk-1.8.0.275 /opt/java/openjdk
 
 USER jenkins
