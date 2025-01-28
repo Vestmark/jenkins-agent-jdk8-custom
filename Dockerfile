@@ -32,7 +32,7 @@ RUN ln -s /opt/java/jdk-17.0.9 /usr/lib/jvm/openjdk-17
 
 RUN rm -f jdk-17.0.9_linux-x64_bin.tar.gz
 
-RUN sed 's+$JAVA_BIN $JAVA_OPTS+/opt/java/openjdk/bin/java $JAVA_OPTS+g' /usr/local/bin/jenkins-agent > /usr/local/bin/jenkins-agent-java11
+RUN sed 's+$JAVA_BIN $JAVA_OPTIONS+/opt/java/openjdk/bin/java $JAVA_OPTIONS+g' /usr/local/bin/jenkins-agent > /usr/local/bin/jenkins-agent-java11
 
 RUN chmod +x /usr/local/bin/jenkins-agent-java11
 
